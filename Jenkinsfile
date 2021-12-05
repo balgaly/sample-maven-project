@@ -1,13 +1,12 @@
 pipeline {
-    agent any 
-    stages {
+  agent any 
+  stages {
     stage('maven install') {
       steps {
-
-        sh 'mvn clean install'
-
+        withMaven(maven: 'maven3') {
+          sh 'mvn clean install'
+        }
       }
     }
-
   }
 }
